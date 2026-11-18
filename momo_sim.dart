@@ -173,3 +173,5 @@ void main() {
   print(isValidPin("11111"));
   print(isValidPin("12a45"));
 }
+//The third transaction surprised me because the remaining balance was only 15,000 RWF,
+//which was not enough to send 24,000 RWF plus the 250 RWF fee.
