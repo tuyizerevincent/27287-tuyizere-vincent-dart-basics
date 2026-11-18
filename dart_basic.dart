@@ -1,7 +1,7 @@
 //student :<Tuyizere vincent>
 // reg_No: <27287/2024>
 //==================== B2 ANSWER ===========================
-/*
+
 const String regNo = '27287';
 final int d = int.parse(regNo[regNo.length - 1]);
 final int t = int.parse(regNo.substring(regNo.length - 2));
@@ -35,7 +35,7 @@ void main() {
 */
 
 // =================== B3 ANSWER ======================
-/*const String regNo = '27287';
+const String regNo = '27287';
 final int d = int.parse(regNo[regNo.length - 1]);
 final int t = int.parse(regNo.substring(regNo.length - 2));
 
@@ -72,11 +72,11 @@ void main() {
  to remove space at the beginning and end
  ->i used fullname.split(regExp(r'\s+'));
  to handle multiple spaces between names.
-*/
+
 
 //============================ C5 ANSWER =================
 
-/*const String regNo = '27287';
+const String regNo = '27287';
 final int d = int.parse(regNo[regNo.length - 1]);
 final int t = int.parse(regNo.substring(regNo.length - 2));
 
@@ -101,7 +101,7 @@ void main() {
   drawTriangle(0);
   drawTriangle(-2);
 }
-*/
+
 // i calculated the spaces on each
 //row by subtracting the current
 // row number from the total height
