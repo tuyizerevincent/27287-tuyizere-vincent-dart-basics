@@ -1,10 +1,10 @@
- // Student: Tuyizere Vincent
+// Student: Tuyizere Vincent
 // Reg no:  27287
 const String regNo = '27287';
 final int d = int.parse(regNo[regNo.length - 1]);
 final int t = int.parse(regNo.substring(regNo.length - 2));
 
-// D2: MoMo fee function
+//MoMo fee function
 int momoFee(int amount) {
   // T.V.
   if (amount <= 0) {
@@ -20,7 +20,7 @@ int momoFee(int amount) {
   }
 }
 
-// F1: Format money with commas
+//Format money with commas
 String formatRwf(int amount) {
   // T.V.
   if (amount == 0) {
@@ -48,7 +48,7 @@ String formatRwf(int amount) {
   return "$result RWF";
 }
 
-// F2: Check PIN validity
+//Check PIN validity
 bool isValidPin(String pin) {
   // T.V.
   if (pin.length != 5) {
@@ -78,7 +78,7 @@ bool isValidPin(String pin) {
   return true;
 }
 
-// F3: Send money
+// Send money
 int sendMoney(int balance, int amount) {
   // T.V.
   int fee = momoFee(amount);
@@ -95,13 +95,15 @@ int sendMoney(int balance, int amount) {
 
   int newBalance = balance - amount - fee;
 
-  print("Sent ${formatRwf(amount)} (fee ${formatRwf(fee)}). "
-      "New balance: ${formatRwf(newBalance)}");
+  print(
+    "Sent ${formatRwf(amount)} (fee ${formatRwf(fee)}). "
+    "New balance: ${formatRwf(newBalance)}",
+  );
 
   return newBalance;
 }
 
-// F4: Buy airtime
+//Buy airtime
 int buyAirtime(int balance, int amount) {
   // T.V.
   if (amount < 100 || amount > 50000) {
@@ -116,13 +118,14 @@ int buyAirtime(int balance, int amount) {
 
   int newBalance = balance - amount;
 
-  print("Airtime ${formatRwf(amount)}. "
-      "New balance: ${formatRwf(newBalance)}");
+  print(
+    "Airtime ${formatRwf(amount)}. "
+    "New balance: ${formatRwf(newBalance)}",
+  );
 
   return newBalance;
 }
 
-// Main function
 void main() {
   // T.V.
   print("Reg no: $regNo | D = $d | T = $t");
@@ -163,10 +166,10 @@ void main() {
 
   // Additional test calls
 
-  print(formatRwf(0));       // Expected: 0RWF
-  print(formatRwf(1250000)); // Expected: 1,250,000 RWF
-  print(formatRwf(-5000));   // Expected: -5,000 RWF
-  print(isValidPin("54321")); // Expected: true
-  print(isValidPin("11111")); // Expected: false
-  print(isValidPin("12a45")); // Expected: false
+  print(formatRwf(0));
+  print(formatRwf(1250000));
+  print(formatRwf(-5000));
+  print(isValidPin("54321"));
+  print(isValidPin("11111"));
+  print(isValidPin("12a45"));
 }
