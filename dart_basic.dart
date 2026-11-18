@@ -73,3 +73,35 @@ void main() {
  ->i used fullname.split(regExp(r'\s+'));
  to handle multiple spaces between names.
 */
+
+//C5 ANSWER
+
+/*const String regNo = '27287';
+final int d = int.parse(regNo[regNo.length - 1]);
+final int t = int.parse(regNo.substring(regNo.length - 2));
+
+void drawTriangle(int height) {
+  if (height <= 0) {
+    return;
+  }
+
+  for (int i = 1; i <= height; i++) {
+    String spaces = " " * (height - i);
+    String symbol = (i % 2 == 1)? "*" : "#";
+
+    print(spaces + symbol * i);
+  }
+}
+
+void main() {
+  print("Reg no: $regNo | D = $d | T = $t");
+
+  drawTriangle(d + 3);
+
+  drawTriangle(0);
+  drawTriangle(-2);
+}
+*/
+// i calculated the spaces on each
+//row by subtracting the current
+// row number from the total height
