@@ -1,1 +1,172 @@
+ // Student: Tuyizere Vincent
+// Reg no:  27287
+const String regNo = '27287';
+final int d = int.parse(regNo[regNo.length - 1]);
+final int t = int.parse(regNo.substring(regNo.length - 2));
 
+// D2: MoMo fee function
+int momoFee(int amount) {
+  // T.V.
+  if (amount <= 0) {
+    return -1;
+  } else if (amount <= 1000) {
+    return 20;
+  } else if (amount <= 10000) {
+    return 100;
+  } else if (amount <= 150000) {
+    return 250;
+  } else {
+    return 1500;
+  }
+}
+
+// F1: Format money with commas
+String formatRwf(int amount) {
+  // T.V.
+  if (amount == 0) {
+    return "0RWF";
+  }
+
+  bool negative = amount < 0;
+  String digits = amount.abs().toString();
+
+  List<String> groups = [];
+
+  while (digits.length > 3) {
+    groups.insert(0, digits.substring(digits.length - 3));
+    digits = digits.substring(0, digits.length - 3);
+  }
+
+  groups.insert(0, digits);
+
+  String result = groups.join(",");
+
+  if (negative) {
+    result = "-$result";
+  }
+
+  return "$result RWF";
+}
+
+// F2: Check PIN validity
+bool isValidPin(String pin) {
+  // T.V.
+  if (pin.length != 5) {
+    return false;
+  }
+
+  if (pin == "12345") {
+    return false;
+  }
+
+  int i = 0;
+
+  while (i < pin.length) {
+    if (int.tryParse(pin[i]) == null) {
+      return false;
+    }
+    i++;
+  }
+
+  if (pin[0] == pin[1] &&
+      pin[1] == pin[2] &&
+      pin[2] == pin[3] &&
+      pin[3] == pin[4]) {
+    return false;
+  }
+
+  return true;
+}
+
+// F3: Send money
+int sendMoney(int balance, int amount) {
+  // T.V.
+  int fee = momoFee(amount);
+
+  if (fee == -1) {
+    print("Failed: invalid amount");
+    return balance;
+  }
+
+  if (amount + fee > balance) {
+    print("Failed: insufficient balance");
+    return balance;
+  }
+
+  int newBalance = balance - amount - fee;
+
+  print("Sent ${formatRwf(amount)} (fee ${formatRwf(fee)}). "
+      "New balance: ${formatRwf(newBalance)}");
+
+  return newBalance;
+}
+
+// F4: Buy airtime
+int buyAirtime(int balance, int amount) {
+  // T.V.
+  if (amount < 100 || amount > 50000) {
+    print("Failed: invalid airtime amount");
+    return balance;
+  }
+
+  if (amount > balance) {
+    print("Failed: insufficient balance");
+    return balance;
+  }
+
+  int newBalance = balance - amount;
+
+  print("Airtime ${formatRwf(amount)}. "
+      "New balance: ${formatRwf(newBalance)}");
+
+  return newBalance;
+}
+
+// Main function
+void main() {
+  // T.V.
+  print("Reg no: $regNo | D = $d | T = $t");
+
+  // PIN tests
+  print("12345: ${isValidPin('12345')}");
+  print("4821$d: ${isValidPin('4821$d')}");
+  print("77777: ${isValidPin('77777')}");
+  print("4821: ${isValidPin('4821')}");
+  print("48a21: ${isValidPin('48a21')}");
+
+  // Starting balance
+  int balance = 20000 + t * 500;
+
+  print("Starting balance: ${formatRwf(balance)}");
+
+  // Send money three times
+  int amount = (d + 1) * 3000;
+
+  int i = 1;
+
+  while (i <= 3) {
+    print("Transaction $i:");
+    balance = sendMoney(balance, amount);
+    i++;
+  }
+
+  // Buy airtime
+  print("Buy airtime:");
+  balance = buyAirtime(balance, 1000);
+
+  // Send 200000
+  print("Send 200000:");
+  balance = sendMoney(balance, 200000);
+
+  // Final balance
+  print("Final balance: ${formatRwf(balance)}");
+
+  // Additional test calls
+
+  print(formatRwf(0));       // Expected: 0RWF
+  print(formatRwf(1250000)); // Expected: 1,250,000 RWF
+  print(formatRwf(-5000));   // Expected: -5,000 RWF
+  print(isValidPin("54321")); // Expected: true
+  print(isValidPin("11111")); // Expected: false
+  print(isValidPin("12a45")); // Expected: false
+}
