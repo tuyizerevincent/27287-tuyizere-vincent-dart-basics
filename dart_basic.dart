@@ -34,9 +34,8 @@ void main() {
 }
 */
 
-
 // B3 ANSWER ======================
-const String regNo = '27287';
+/*const String regNo = '27287';
 final int d = int.parse(regNo[regNo.length - 1]);
 final int t = int.parse(regNo.substring(regNo.length - 2));
 
@@ -65,3 +64,12 @@ void main() {
   print(initials(" tuyizere  vincent "));
   print(initials(" "));
 }
+
+1.which input broke your first version 
+->input is 'tuyizere  vincent ' broke my first version because it  contain  extra spaces
+2.what did you change ?
+->i used  full name = full name.trim(); 
+ to remove space at the beginning and end
+ ->i used fullname.split(regExp(r'\s+'));
+ to handle multiple spaces between names.
+*/
