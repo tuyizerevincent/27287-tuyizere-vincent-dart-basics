@@ -2,7 +2,7 @@
 // reg_No: <27287/2024>
 //==================== B2 ANSWER ===========================
 
-/*const String regNo = '27287';
+const String regNo = '27287';
 final int d = int.parse(regNo[regNo.length - 1]);
 final int t = int.parse(regNo.substring(regNo.length - 2));
 
@@ -35,7 +35,7 @@ void main() {
 */
 
 // =================== B3 ANSWER ======================
-/*const String regNo = '27287';
+const String regNo = '27287';
 final int d = int.parse(regNo[regNo.length - 1]);
 final int t = int.parse(regNo.substring(regNo.length - 2));
 
@@ -161,5 +161,5 @@ void main() {
 
   print("Total fees: $totalFees RWF");
 }
-=========================== 
+//=========================== 
 */
